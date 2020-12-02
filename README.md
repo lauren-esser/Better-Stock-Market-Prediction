@@ -172,17 +172,17 @@ Model:
 
 Model Visuals:
 
-[](/images/class.png)
+![](/images/class.png)
 
-[](/images/cm.png)
+![](/images/cm.png)
 
 ![](/images/nlploss.png)
 
-[](/images/acc.png)
+![](/images/acc.png)
 
-[](/images/pre.png)
+![](/images/pre.png)
 
-[](/images/recall.png)
+![](/images/recall.png)
 
 We can see that Model 2 has a low accuracy of 53%. While as a data scientist this can be frustrating to see such low numbers, we need to remind ourselves that predicting the stock market is a very difficult task to complete. Therefore anything above 50% can be considered a small success.
 
@@ -191,11 +191,11 @@ For the last Model I added my y_hat_sequences from Model 2 as a new column title
 
 Final Model:
 
-[](/images/final.png)
+![](/images/final.png)
 
 Final Model Predictions:
 
-[](/images/finalpredictions.png)
+![](/images/finalpredictions.png)
 
 Looking at the prediction line from our final model, it is clear that is not where we would like it to be. Looking back through the data I realized that the y_hat_sequences from Model 2 came up to be 100% ones. Therefore in my Interpret/Recommendations section I will discuss next steps I would take to try and create a better model. 
 
@@ -203,11 +203,11 @@ Looking at the prediction line from our final model, it is clear that is not whe
 
 1. Look at list of words that demonstrated an increase in the current stock market data. 
 
-[](/images/increase.png)
+![](/images/increase.png)
 
 2. Look at list of words that demonstrated a decrease in the current stock market data.
 
-[](/images/decrease.png)
+![](/images/decrease.png)
 
 3. Based off my results it might be best to try the same models, but use more specific headlines. An example of this would be seperating headlines by genre. A next step could be to use politics genre of headlines to predict the S&P 500.
 
