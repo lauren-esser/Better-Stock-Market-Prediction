@@ -3,7 +3,7 @@
 
 **Author**: Lauren Esser
 
-The contents of this repository detail an analysis of the module one project. This analysis is detailed in hopes of making the work accessible and replicable.
+The contents of this repository detail an analysis of my capstone project. This analysis is detailed in hopes of making the work accessible and replicable.
 
 
 ### Business problem:
@@ -17,7 +17,7 @@ Stock Market data comes from kibot.com which provides free historical intraday d
 
 **News Headline Data:** https://www.kaggle.com/rmisra/news-category-dataset
 
-The news dataset contains around 200k news headlines from 2012 to 2018 obtained from the Huffington Post.To obtain data click [here](https://www.kaggle.com/rmisra/news-category-dataset) then click the download button in the top right. Once again you will want to upload the file into your Google drive in order to follow along with the notebook.
+The news dataset contains around 200k news headlines from 2012 to 2018 obtained from the Huffington Post. To obtain data click [here](https://www.kaggle.com/rmisra/news-category-dataset) then click the download button on the top right of page. Once again you will want to upload the file into your Google drive in order to follow along with the notebook.
 
 
 ## Methods
@@ -31,7 +31,7 @@ Data was obtained on Huffington Post news headlines and stocks from the S&P 500.
 
 *STOCKS*: 
 
-To scrub the stocks dataset I first checked for nulls and the information column. I then converted the date column to datetime and set date as the index. In order to make sure I was looking at the same time frame for both stocks and news articles, I sliced and saved the correct dates for stocks to correspond to the news articles 01-28-2012 to 05-26-2018. As a last step I resampled the stocks data to business day frequency.
+To scrub the stocks dataset I first checked for nulls and gathered information using `.info()`. I then converted the date column to datetime and set date as the index. In order to make sure I was looking at the same time frame for both stocks and news articles, I sliced and saved the correct dates for stocks to correspond to the news articles 01-28-2012 to 05-26-2018. As a last step I resampled the stocks data to business day frequency.
 
 *NEWS*: 
 
@@ -48,7 +48,7 @@ During the exploration process of stocks I took time to look at many different v
 
 *NEWS*: 
 
-Within the news section I wanted to get a feel for the different categories of news headlines we have as well as the most common words used through out the news dataset. 
+Within the news section I wanted to get a feel for the different categories of news headlines we have as well as the most common words used throughout the news dataset. 
 
 1. Headline Count of Each Genre
 
@@ -89,7 +89,7 @@ To create the Stocks Time Series Model I created three different types of models
 
 2. *NLP Model*
 
-In order to set up for the NLP model specific steps had to take place before building the model. First I calculated the change in stocks between each day and set this as a target column titled 'daily_change'. I then I identified if this change was positive or negative. If positive it would show as a 1 in a new column called 'movement', if negative it would show as a 0.
+In order to set up for the NLP model specific steps had to take place before building the model. First, I calculated the change in stocks between each day and set this as a target column titled 'daily_change'. Next, identified if this change was positive or negative. If positive it would show as a 1 in a new column called 'movement', if negative it would show as a 0.
 
 *Code for daily differences:*
 ```
@@ -110,7 +110,7 @@ news2 = b.agg({'headline': ' '.join})
 news2.head()
 ```
 
-Third, I offset the news headline using the shift method to move all of the headline rows up one in order to correspond with the date before. By doing this I can use the headlines from the day before in order to see if the stock market is increasing or decreasing. Within this section I also resampled my news headlines to business days in order to correspond with the stock market data.
+Third, I offset the news headline using the shift method to move all of the headline rows up one in order to correspond with the date before. By doing this I can use the headlines from the day before in order to see if the stock market increased or decreased. Within this section I also resampled my news headlines to business days in order to correspond with the stock market data.
 
 *Code for shift:*
 ```
@@ -184,9 +184,10 @@ Model Visuals:
 
 ![](/images/recall.png)
 
-We can see that Model 2 has a low accuracy of 53%. While as a data scientist this can be frustrating to see such low numbers, we need to remind ourselves that predicting the stock market is a very difficult task to complete. Therefore anything above 50% can be considered a small success.
+We can see that Model 2 has a low accuracy of 53%. While as a data scientist this can be frustrating to see such low numbers, we need to remind ourselves that predicting the stock market is a very difficult task to complete. Therefore, anything above 50% can be considered a small success.
 
 3. *Using results from NLP to create a new Time Series Model*
+
 For the last Model I added my y_hat_sequences from Model 2 as a new column titled ```df['predictions']```. I then performed a train, test, split the same way as in Model 2, I scaled the data using MinMaxScaler, and lastly created a TimeSeriesGenerator. 
 
 Final Model:
@@ -197,39 +198,39 @@ Final Model Predictions:
 
 ![](/images/finalpredictions.png)
 
-Looking at the prediction line from our final model, it is clear that is not where we would like it to be. Looking back through the data I realized that the y_hat_sequences from Model 2 came up to be 100% ones. Therefore in my Interpret/Recommendations section I will discuss next steps I would take to try and create a better model. 
+Looking at the prediction line from our final model, it is clear that is not where we would like it to be. Looking back through the data I realized that the y_hat_sequences from Model 2 came up to be 100% ones. In my Interpret/Recommendations section I will discuss next steps I would take to try and create a better model. 
 
 ## Interpret/Recommendations:
 
-1. Look at list of words that demonstrated an increase in the current stock market data. 
+1. Look at the list of words that demonstrated an increase in the current stock market data. 
 
 ![](/images/increase.png)
 
-2. Look at list of words that demonstrated a decrease in the current stock market data.
+2. Look at the list of words that demonstrated a decrease in the current stock market data.
 
 ![](/images/decrease.png)
 
-3. Based off my results it might be best to try the same models, but use more specific headlines. An example of this would be seperating headlines by genre. A next step could be to use politics genre of headlines to predict the S&P 500.
+3. Based off my results it might be best to try the same models, but use more specific headlines. An example of this would be separating headlines by genre. A next step could be to use politics genre of headlines to predict the S&P 500.
 
 ![](/images/headlinegenre.png)
 
 4. When building your own stock analysis using headlines I recommend following the same approach. 
-- Build a simple Time Series Model: I recommend using a Neural Network
+- Build a simple Time Series Model: I suggest using a Neural Network
 - Create a NLP model to see what words cause the stock to increase or decrease: I recommend a LSTM Neural Network or a Random Forest
 - Build a Time Series Model to see which news headlines better predict the market.
 
 ## Limitations & Next Steps
 
-1. Separate News Headlines by Category to see which Category impacts the stock market more.
-2. Test different Newspapers (ex. Wall Street Journal, New York Times, etc.) to see if one news source has a greater impact than others.
-3. Test if categorical papers impact categorical stocks. Ex. Sports headlines impacting sports company stocks. 
+1. Separate News Headlines by Category to see which category impacts the stock market more.
+2. Test different Newspapers such as Wall Street Journal, New York Times, etc. to see if one news source has a greater impact than others.
+3. Test if categorical papers impact categorical stocks, for example: Sports headlines impacting sports company stocks. 
 4. Try different model types. Ex. PDArima model for initial time series model.
 
 ### For further information
 
-Please review the narrative of my analysis in [my jupyter notebook](./Capstone11_12.ipynb) or review my [presentation](./presentation.pdf)
+Please review the narrative of my analysis in [my jupyter notebook](./Capstone11_12.ipynb) or review my [presentation](./presentation.pdf).
 
-For any additional questions, please contact Lauren.Esser02@gmail.com or reach out to Lauren Esser on LinkedIn [here](https://www.linkedin.com/in/laurenesser/)
+For any additional questions, please contact Lauren.Esser02@gmail.com or reach out to Lauren Esser on LinkedIn [here](https://www.linkedin.com/in/laurenesser/).
 
 
 ##### Repository Structure:
