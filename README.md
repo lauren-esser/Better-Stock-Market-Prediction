@@ -60,7 +60,7 @@ Within the news section I wanted to get a feel for the different categories of n
 
 3. Bar Graph of Word Count
 
-![](/images/wordcount.png)
+![](/images/wordcount2.png)
 
 **Model**:
 
