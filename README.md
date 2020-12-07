@@ -238,7 +238,7 @@ For any additional questions, please contact Lauren.Esser02@gmail.com or reach o
 ```
 
 ├── README.md               <- The top-level README for reviewers of this project.
-├── Capstone11_12.ipynb     <- narrative documentation of analysis in jupyter notebook
+├── Final.ipynb     <- narrative documentation of analysis in jupyter notebook
 ├── presentation.pdf        <- pdf version of project presentation
 
 ```
