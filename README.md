@@ -19,9 +19,7 @@ Stock Market data comes from kibot.com which provides free historical intraday d
 
 The news dataset contains around 200k news headlines from 2012 to 2018 obtained from the Huffington Post. To obtain data click [here](https://www.kaggle.com/rmisra/news-category-dataset) then click the download button on the top right of page. Once again you will want to upload the file into your Google drive in order to follow along with the notebook.
 
-- *Link to Google Colab Notebook*: 
-
-<a href=“https://colab.research.google.com/github/lauren-esser/Better-Stock-Market-Prediction/blob/master/Capstone11_12.ipynb” target=“_parent”><img src=“https://colab.research.google.com/assets/colab-badge.svg” alt=“Open In Colab”/></a>
+- [Link to Google Colab Notebook](https://colab.research.google.com/github/lauren-esser/Better-Stock-Market-Prediction/blob/master/Capstone11_12.ipynb)
 
 ## Methods
 The OSEMN Process was used within this project, I will go over each step briefly below:
