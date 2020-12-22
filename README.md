@@ -7,8 +7,8 @@ The contents of this repository detail an analysis of my capstone project. This 
 
 
 ### Business problem:
-Can we use News Headlines to better predict when the S&P 500 will rise? 
->By creating a model that gives a high success rate of stock market predictions we can invest our money wisely to make good profits. 
+Can we use News Headlines to better predict the S&P500? 
+>By creating a model that gives a high success rate of stock market predictions we can invest our money wisely to avoid loss and make good profits. 
 
 ### Data
 **Stock Market Data:** www.kibot.com/free_historical_data.aspx
@@ -165,7 +165,7 @@ X_train_padded = tf.keras.preprocessing.sequence.pad_sequences(
 print(X_train_padded)
 ```
 
-Creation of the NLP Model: For the NLP Model I created an LSTM Neural Network as well as a Random Forest. Both models came out with the same accuracy of 53%, therefore I will cover the LSTM Model here.
+Creation of the NLP Classification Model: For the NLP Classification Model I created an LSTM Neural Network as well as a Random Forest. Both models came out with the same accuracy, precision, and recall, therefore I will cover the LSTM Model here.
 
 Model:
 
@@ -203,11 +203,11 @@ Looking at the prediction line from our final model, it is clear that is not whe
 
 ## Interpret/Recommendations:
 
-1. Look at the list of words that demonstrated an increase in the current stock market data. 
+1. Invest when positive words are present in news headlines.  
 
 ![](/images/increase.png)
 
-2. Look at the list of words that demonstrated a decrease in the current stock market data.
+2. Wait to invest when negative words are present in news headlines.
 
 ![](/images/decrease.png)
 
@@ -217,7 +217,7 @@ Looking at the prediction line from our final model, it is clear that is not whe
 
 4. When building your own stock analysis using headlines I recommend following the same approach. 
 - Build a simple Time Series Model: I suggest using a Neural Network
-- Create a NLP model to see what words cause the stock to increase or decrease: I recommend a LSTM Neural Network or a Random Forest
+- Create a NLP Classification model to see what words cause the stock to increase or decrease: I recommend a LSTM Neural Network or a Random Forest
 - Build a Time Series Model to see which news headlines better predict the market.
 
 ## Limitations & Next Steps
@@ -239,7 +239,7 @@ For any additional questions, please contact Lauren.Esser02@gmail.com or reach o
 ```
 
 ├── README.md               <- The top-level README for reviewers of this project.
-├── Final.ipynb     <- narrative documentation of analysis in jupyter notebook
+├── Better-Stock-Prediction-Notebook.ipynb     <- narrative documentation of analysis in jupyter notebook
 ├── presentation.pdf        <- pdf version of project presentation
 
 ```
